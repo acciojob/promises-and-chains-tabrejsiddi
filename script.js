@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btn");
+const btn = document.getElementById("btn");
 
+if (btn) {
   btn.addEventListener("click", function (e) {
     e.preventDefault();
 
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ageNum = Number(age);
 
-    const checkVoting = new Promise((resolve, reject) => {
+    new Promise((resolve, reject) => {
       setTimeout(() => {
         if (ageNum > 18) {
           resolve(`Welcome, ${name}. You can vote.`);
@@ -22,10 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
           reject(`Oh sorry ${name}. You aren't old enough.`);
         }
       }, 4000);
-    });
-
-    checkVoting
+    })
       .then((msg) => alert(msg))
       .catch((msg) => alert(msg));
   });
-});
+}
